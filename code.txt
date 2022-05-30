@@ -1,2 +1,3 @@
 Import-Module ActiveDirectory
 Add-Type -AssemblyName System.Web
+$pass = [System.Web.Security.Membership]::GeneratePassword(10,2)

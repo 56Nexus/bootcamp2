@@ -5,3 +5,5 @@ $name=Read-Host -Prompt "Vvedi"
 $encrypted = ConvertTo-SecureString -AsPlainText -Force -String $name
 Get-ADComputer $name | Set-ADAccountPassword –NewPassword:$encrypted -Reset:$true
 Get-ADComputer $name | Disable-ADAccount
+Wait-Event -Timeout 1 #Сделать паузу на 1 секунду т.к не успевает отработать сброс пароля и Disable
+Get-ADComputer $name -Properties * | FT Name, Enabled, PasswordLastSet, CanonicalName -Autosize

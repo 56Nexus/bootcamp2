@@ -2,3 +2,4 @@ Import-Module ActiveDirectory
 Add-Type -AssemblyName System.Web
 $pass = [System.Web.Security.Membership]::GeneratePassword(10,2)
 $name=Read-Host -Prompt "Vvedi"
+$encrypted = ConvertTo-SecureString -AsPlainText -Force -String $name

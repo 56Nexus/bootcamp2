@@ -3,3 +3,4 @@ Add-Type -AssemblyName System.Web
 $pass = [System.Web.Security.Membership]::GeneratePassword(10,2)
 $name=Read-Host -Prompt "Vvedi"
 $encrypted = ConvertTo-SecureString -AsPlainText -Force -String $name
+Get-ADComputer $name | Set-ADAccountPassword –NewPassword:$encrypted -Reset:$true
